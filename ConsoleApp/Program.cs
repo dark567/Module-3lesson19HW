@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace ConsoleApp
 {
     public delegate double DelegDictionary(double perTemp, double perTempTwo = 0);
-
+    
     public enum MenuItem
     {
         [Description("\nSelectMenuItem:")]
@@ -47,6 +47,7 @@ namespace ConsoleApp
         {
             bool mQuit = false;
             double area, length;
+            DelegDictionary delegDictionary;
 
             ShowMenuItems();
 
@@ -74,10 +75,10 @@ namespace ConsoleApp
                             Console.Write("Input radius:");
                         } while (!double.TryParse(Console.ReadLine(), out radios));
 
-                        DelegDictionary delegDictionaryCircle = new DelegDictionary(Calc.GetAreaCircle);
-                        area = delegDictionaryCircle(radios);
-                        delegDictionaryCircle = new DelegDictionary(Calc.GetLengthCircle);
-                        length = delegDictionaryCircle(radios);
+                        delegDictionary = new DelegDictionary(Calc.GetAreaCircle);
+                        area = delegDictionary(radios);
+                        delegDictionary = new DelegDictionary(Calc.GetLengthCircle);
+                        length = delegDictionary(radios);
                         Console.WriteLine($"Circle radios:{radios} Area:{area}");
                         Console.WriteLine($"Circle radios:{radios} Length:{length}");
 
@@ -92,10 +93,10 @@ namespace ConsoleApp
                             Console.Write("Input Side:");
                         } while (!double.TryParse(Console.ReadLine(), out Side));
 
-                        DelegDictionary delegDictionarySquare = new DelegDictionary(Calc.GetAreaSquare);
-                        area = delegDictionarySquare(Side);
-                        delegDictionarySquare = new DelegDictionary(Calc.GetLengthSquare);
-                        length = delegDictionarySquare(Side);
+                        delegDictionary = new DelegDictionary(Calc.GetAreaSquare);
+                        area = delegDictionary(Side);
+                        delegDictionary = new DelegDictionary(Calc.GetLengthSquare);
+                        length = delegDictionary(Side);
                         Console.WriteLine($"Square side:{Side} Area:{area}");
                         Console.WriteLine($"Square side:{Side} Length:{length}");
 
@@ -115,10 +116,10 @@ namespace ConsoleApp
                             Console.Write("Input Side Two:");
                         } while (!double.TryParse(Console.ReadLine(), out SideTwo));
 
-                        DelegDictionary delegDictionaryRectangle = new DelegDictionary(Calc.GetAreaRectangle);
-                        area = delegDictionaryRectangle(SideOne, SideTwo);
-                        delegDictionaryRectangle = new DelegDictionary(Calc.GetLengthRectangle);
-                        length = delegDictionaryRectangle(SideOne, SideTwo);
+                        delegDictionary = new DelegDictionary(Calc.GetAreaRectangle);
+                        area = delegDictionary(SideOne, SideTwo);
+                        delegDictionary = new DelegDictionary(Calc.GetLengthRectangle);
+                        length = delegDictionary(SideOne, SideTwo);
                         Console.WriteLine($"Rectangle sideOne:{SideOne},sideTwo:{SideTwo} Area:{area}");
                         Console.WriteLine($"Rectangle sideOne:{SideOne},sideTwo:{SideTwo} Length:{length}");
 
@@ -137,10 +138,10 @@ namespace ConsoleApp
                             Console.Write("Input base side:");
                         } while (!double.TryParse(Console.ReadLine(), out Base));
 
-                        DelegDictionary delegDictionaryTriangle = new DelegDictionary(Calc.GetAreaTriangle);
-                        area = delegDictionaryTriangle(Hight, Base);
-                        delegDictionaryTriangle = new DelegDictionary(Calc.GetLengthTriangle);
-                        length = delegDictionaryTriangle(Hight, Base);
+                        delegDictionary = new DelegDictionary(Calc.GetAreaTriangle);
+                        area = delegDictionary(Hight, Base);
+                        delegDictionary = new DelegDictionary(Calc.GetLengthTriangle);
+                        length = delegDictionary(Hight, Base);
                         Console.WriteLine($"Triangle hight:{Hight},base side:{Base} Area:{area}");
                         Console.WriteLine($"Triangle hight:{Hight},base side:{Base} Length:{length}");
 
